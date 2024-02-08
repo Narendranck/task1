@@ -1,7 +1,7 @@
 function updateItem(/* item, index */) {
- 
+
 }
- 
+
 function update(fieldset) {
   const items = [...fieldset.children].filter((item) => item.tagName === 'FIELDSET');
   items.forEach((item, index) => {
@@ -9,7 +9,7 @@ function update(fieldset) {
     updateItem(item, index);
   });
 }
- 
+
 function createButton(fd) {
   const button = document.createElement('button');
   button.className = `${fd.Name}-${fd.Label} fieldset-${fd.Label}`;
@@ -17,7 +17,7 @@ function createButton(fd) {
   button.type = 'button';
   return button;
 }
- 
+
 function createItem(fieldset, removable = true) {
   const item = document.createElement('fieldset');
   item.innerHTML = fieldset.elements['#template'].innerHTML;
@@ -31,7 +31,7 @@ function createItem(fieldset, removable = true) {
   }
   return item;
 }
- 
+
 function validateMin(fieldset) {
   const min = parseInt(fieldset.getAttribute('min') || -1, 10);
   for (let i = 0; i < min; i += 1) {
@@ -39,7 +39,7 @@ function validateMin(fieldset) {
   }
   update(fieldset);
 }
- 
+
 export default async function decorate(form) {
   [...form.querySelectorAll('fieldset[data-repeatable=true]')].forEach((fieldset) => {
     fieldset.elements['#template'] = document.createElement('div');
